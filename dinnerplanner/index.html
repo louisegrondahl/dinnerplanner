@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dinner planner</title>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+
+</head>
+<body>
+	<div class="jumbotron">
+		<div class="text-center"><h1>Dinner planner</h1></div>
+	</div>
+
+
+	<div class="row">
+		<div id="sidebarView" class="col-sm-3">
+			<div class="sidebar-nav">
+				<div class="navbar navbar-default" role="navigation">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<span class="visible-xs navbar-brand">My Dinner</span>
+					</div>
+
+					<div class="navbar-collapse collapse sidebar-navbar-collapse  col-sm-4">
+						<ul class="nav navbar-nav">
+							<div class="col-sm-12">
+								<h4>My dinner</h4>
+							</div>
+
+							<div class="col-sm-12">
+
+									<div class="input-group">
+										<div class="col-xs-1 col-md-1">
+											<span class="input-group-addon" id="numGuests"></span> 
+
+										</div>
+										<div class="col-xs-1 col-md-1">
+											<span class="input-group-btn">
+												<button id="minusGuest" class="btn">
+													<span class="glyphicon glyphicon-minus"></span>
+												</button>
+											</span>
+										</div>
+										<div class="col-xs-1 col-md-1">
+											<span class="input-group-btn">
+												<button id="plusGuest" class="btn">
+													<span class="glyphicon glyphicon-plus"></span>
+												</button>
+											</span>
+										</div>
+									</div>
+									<div>
+										<p>Dish name
+											<span style="float: right">Cost</span>
+										</p>
+									</div>
+									<hr>
+									<div>
+										<p>SEK: 
+											<font id="totalPrice" color="red" style="float: right"></font>
+										</p>
+										
+									</div>	
+
+
+									<div class="row">
+										<button id="" class="btn" align="center" style="margin-bottom: 15px;">Confirm dinner</button>
+										
+									</div>
+							</ul>
+						</div><!--/.nav-collapse -->
+					</div>
+				</div>
+			</div>
+
+
+
+			<div id="dishView" class="col-md-9">
+				<i class="fa fa-times" data-toggle="collapse" data-target="sidebar" aria-hidden="true" aria-expanded="false" aria-controls="sidebar" onclick="document.getElementById(this.getAttribute('data-target')).style.display = 'none';"></i>
+				<h2>FIND A DISH</h2>
+				<span id="SelectedDish"></span>
+				<nav class="navbar navbar-light bg-faded justify-content-between">
+
+					<form class="form-inline">
+						<input class="form-control mr-sm-2" type="text" placeholder="Enter key words">
+
+						<select class="form-control" id="selectType">
+							<!--Här vill vi ha reference till id="dishtypeContainer" för varje type. Som då refererar till funktionen get selected dish.-->
+							<option>All</option> <!-- Här kallas id="menuContainer". getfullmenu-->
+							<option>main dish</option>
+							<option>starter</option>
+							<option>dessert</option>
+						</select>
+
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="background-color: lightgrey;">Search</button>
+					</form>
+				</nav>
+				<hr>
+				<div class="container">
+					<h4>Some alternative:</h4>
+					<div id="dishContainer" class="row" >
+					<!--Här hamnar dishes som genereras i dishView-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+</div>
+
+
+
+
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+<!-- The application JavaScript code -->
+<script src="js/app.js"></script>
+<script src="js/model/dinnerModel.js"></script>
+<script src="js/view/sidebarView.js"></script>
+<script src="js/view/dishView.js"></script>
+<script src="js/view/selectedDishView.js"></script>
+<!-- TODO: Here you should include JS code for your other views -->
+</body>
+</html>
