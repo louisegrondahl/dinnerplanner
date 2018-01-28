@@ -10,8 +10,13 @@ var DinnerModel = function() {
 	var menu = [];
 
 
-	this.setNumberOfGuests = function(num) {
-			}
+	this.decreseNumberOfGuests = function(num) {
+		num=num--;
+	}
+
+	this.increseNumberOfGuests = function(num) {
+		num=num++;
+	}
 	
 	this.getNumberOfGuests = function() {
 		return num;
@@ -83,7 +88,21 @@ var DinnerModel = function() {
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		//TODO Lab 1
+		for(i in dishes) {
+			if(dishes[i].id==id){
+				var dish = dishes[i];
+				break;
+			}
+		}
+		if(dish.type=='starter'){
+			menu.splice(0,1);
+		}else if(dish.type=='main dish'){
+			menu.splice(1,1);
+		}else if(dish.type=='dessert'){
+			menu.splice(2,1);
+		}else{
+			console.log('somthing went wrong');
+		}
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")

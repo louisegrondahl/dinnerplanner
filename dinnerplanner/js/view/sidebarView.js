@@ -36,7 +36,8 @@ var SideBarView = function (container, model) {
 	var numberOfGuests = container.find('#numGuests');
 	var priceContainer = container.find('#totalPrice');
 	//Lägger till dish i menu
-	var addtomenuContainer = container.find('#addtomenu');
+	
+	var fullMenuContainer = container.find('#fullMenu');
 
 	/**
 	 * When we want references to some view elements to be available from outside of view, we 
@@ -58,11 +59,10 @@ var SideBarView = function (container, model) {
 	 */
 	numberOfGuests.html(model.getNumberOfGuests());
 	priceContainer.html(model.getTotalMenuPrice());
-	//addtomenuContainer.html(model.addDishToMenu());
+	fullMenuContainer.html(model.getFullMenu());
 
-	model.addDishToMenu('1');
 	console.log(model.getFullMenu());
-	//console.log(model.addDishToMenu('French toast'));
+	console.log(model.getTotalMenuPrice());
 
 
 	

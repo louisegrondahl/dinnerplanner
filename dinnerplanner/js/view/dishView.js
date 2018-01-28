@@ -10,7 +10,6 @@ var DishView = function(container, model) {
 	var typeList = ['starter', 'main dish', 'dessert'];
 	var index = selectElement.options[e.selectedIndex].value;
 	*/
-
 	//Skapa ny variabel för bilderna
 	var dishes = model.getAllDishes('starter');
 	//Skapa ny variabel för type,dish
@@ -27,7 +26,6 @@ var DishView = function(container, model) {
 		htmlstring += '</div>';							
 		
 	}
-
 	dishContainer.html(htmlstring);
 	dishtypeContainer.html(dishtype);
 	menuContainer.html(menu);

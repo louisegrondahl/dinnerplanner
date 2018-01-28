@@ -2,6 +2,7 @@ var DinnerOverView = function(container, model) {
 	var finalmenuContainer = container.find('#finalmenuContainer');
 	var priceContainer = container.find('#totalPrice');
 //var dishes = model.getFullMenu("allt typ");
+	
 	var dishes = model.getAllDishes('starter');
 	var htmlstring = "";
 
