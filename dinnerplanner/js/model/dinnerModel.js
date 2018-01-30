@@ -136,6 +136,14 @@ var DinnerModel = function() {
 		}
 	}
 
+	this.addObserver = function(observer) {
+	/* Your code here */ 
+	}
+	
+	var notifyObservers = function(obj) {
+	/* Your code here */ 
+	}
+
 
 	// the dishes variable contains an array of all the 
 	// dishes in the database. each dish has id, name, type,

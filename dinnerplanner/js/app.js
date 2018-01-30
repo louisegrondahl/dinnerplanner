@@ -10,6 +10,16 @@ $(function() {
 	//var dinnerprintView = new DinnerPrintView($("#dinnerPrintView"),model);
 	//var dishView = new DishView($("#dishView"),model);
 
+	this.showDishViewScreen = function(dishView, model) {
+		var x = document.getElementById('dishView');
+
+		if (x.style.display === 'none') {
+			x.style.display = 'block';
+		}else {
+			x.style.display = 'none';
+		}
+	}
+
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to
 	 * use the $('someSelector') to search for elements in the whole HTML.

@@ -49,6 +49,17 @@ var SideBarView = function (container, model) {
 	 * this button and do something with it (see Lab 2).
 	 * 
 	 */
+	var ExampleViewController = function(SideBarView, model ) {
+
+	 SideBarView.plusButton.click(function(){
+	 model.increseNumberOfGuests(model.getNumberOfGuests() + 1);
+	 });
+
+	 SideBarView.minusButton.click(function(){
+	 model.decreseNumberOfGuests(model.getNumberOfGuests() - 1);
+	 });
+	}
+	
 	this.plusButton = container.find('#plusGuest');
 	this.minusButton = container.find('#minusGuest');
 
