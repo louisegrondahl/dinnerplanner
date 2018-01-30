@@ -10,12 +10,8 @@ var DinnerModel = function() {
 	var menu = [];
 
 
-	this.decreseNumberOfGuests = function(num) {
-		num=num--;
-	}
+	this.setNumberOfGuests = function() {
 
-	this.increseNumberOfGuests = function(num) {
-		num=num++;
 	}
 	
 	this.getNumberOfGuests = function() {
@@ -25,7 +21,7 @@ var DinnerModel = function() {
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
 	var dishtype = [];
-		for(i in dishes){
+		for(var i in dishes){
 			if (dishes[i].type == type){
 				dishtype.push(dishes[i]);
 			}
@@ -42,8 +38,8 @@ var DinnerModel = function() {
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function(id) {
 	var ingredient = [];
-		for(i in dishes) {
-			for(j in dishes[i].ingredients){
+		for(var i in dishes) {
+			for(var j in dishes[i].ingredients){
 				if (!ingredient.includes(dishes[i].ingredients[j].name)){
 					ingredient.push(dishes[i].ingredients[j].name);
 				}
@@ -55,8 +51,8 @@ var DinnerModel = function() {
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
 		var totalPrice=0;
-		for (i in menu) {
-			for(j in menu[i].ingredients){
+		for (var i in menu) {
+			for(var j in menu[i].ingredients){
 				totalPrice += menu[i].ingredients[j].price*num;
 			}
 		}
@@ -67,7 +63,7 @@ var DinnerModel = function() {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		for(i in dishes) {
+		for(var i in dishes) {
 			if(dishes[i].id==id){
 				var dish = dishes[i];
 				break;
@@ -79,8 +75,6 @@ var DinnerModel = function() {
 			menu[1]=dish;
 		}else if(dish.type=='dessert') {
 			menu[2]=dish;
-		}else{
-			console.log('gick snett');
 		}
 	}
 
@@ -88,7 +82,7 @@ var DinnerModel = function() {
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		for(i in dishes) {
+		for(var i in dishes) {
 			if(dishes[i].id==id){
 				var dish = dishes[i];
 				break;
@@ -100,8 +94,6 @@ var DinnerModel = function() {
 			menu.splice(1,1);
 		}else if(dish.type=='dessert'){
 			menu.splice(2,1);
-		}else{
-			console.log('somthing went wrong');
 		}
 	}
 
