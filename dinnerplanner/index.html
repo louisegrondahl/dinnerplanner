@@ -15,8 +15,20 @@
 		<div class="text-center"><h1>Dinner planner</h1></div>
 	</div>
 
+<div id=stateController>	
+	<div id="startpage">
+		<div class="container">
+			<div class="text-center">
+				<p>Welcome to my page. It is great! / Louise</p>
+			<button id ="createnewdinner" type="button" class="btn btn-primary center-block" >Create New Dinner</button>
+		</div>
+	</div>
+</div>
 
+
+	<div id="index">
 	<div class="row">
+
 		<div id="sidebarView" class="col-sm-3">
 			<div class="sidebar-nav">
 				<div class="navbar navbar-default" role="navigation">
@@ -101,7 +113,7 @@
 							<option>dessert</option>
 						</select>
 
-						<input class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="showDishViewScreen()" value="Search" style="background-color: lightgrey;"></input>
+						<input class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="showselectedDishView()" value="Search" style="background-color: lightgrey;"></input>
 					</form>
 				</nav>
 				<hr>
@@ -112,7 +124,35 @@
 				<span id="dishContainer" class="row" ></span>
 
 				<!--Här hamnar dishes som genereras i dishView-->
+			</div>
+
+
+			<div id="selectedDishView" class="col-sm-9">
+			<p><button type="button" class="btn btn-primary center-block">Back to search</button><p>
+				<!--<i class="fa fa-times" data-toggle="collapse" data-target="sidebar" aria-hidden="true" aria-expanded="false" aria-controls="sidebar" onclick="document.getElementById(this.getAttribute('data-target')).style.display = 'none';"></i>-->
+				<div class="col-sm-6">
+					<h1 id="title"></h1>
+					<div id="imgContainer">
+					</div>
 				</div>
+				<div class="col-sm-6">
+					<h1>Ingredients</h1>
+					<div id="ingredientsContainer">
+					</div>
+					<p><button id="addtomenu" type="button" class="btn btn-primary" style="float: left">Add to menu</button><p>
+				</div>
+				<div class="col-sm-12">
+					<h1>Recipe</h1>
+					<div id="descriptionContainer">
+					</div>
+				</div>
+
+
+			</div>
+
+
+
+
 			</div>
 			
 		</div>
@@ -121,6 +161,9 @@
 
 
 </div>
+</div>
+</div>
+
 
 
 
@@ -133,11 +176,13 @@
 
 <!-- The application JavaScript code -->
 <script src="js/app.js"></script>
+<script src="js/stateController.js"></script>
 <script src="js/model/dinnerModel.js"></script>
 <script src="js/view/sidebarView.js"></script>
 <script src="js/view/mainView.js"></script>
 <script src="js/view/selectedDishView.js"></script>
 <script src="js/view/dishView.js"></script>
+
 <!-- TODO: Here you should include JS code for your other views -->
 </body>
 </html>

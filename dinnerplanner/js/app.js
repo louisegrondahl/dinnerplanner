@@ -7,19 +7,14 @@ $(function() {
 	var mainView = new MainView($("#mainView"),model);
 	var selectedDishView = new SelectedDishView($("#selectedDishView"),model);
 	var dishView = new DishView($("#dishView"),model);
+	var stateController = new stateController($("stateController"),model);
 	//var dinnerOverView = new DinnerOverView($("#dinnerOverView"),model);
 	//var dinnerprintView = new DinnerPrintView($("#dinnerPrintView"),model);
 	//var dishView = new DishView($("#dishView"),model);
 
-	this.showDishViewScreen = function(mainView, model) {
-		var x = document.getElementById('mainView');
 
-		if (x.style.display === 'none') {
-			x.style.display = 'block';
-		}else {
-			x.style.display = 'none';
-		}
-	}
+
+
 
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to
