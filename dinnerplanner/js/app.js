@@ -4,14 +4,15 @@ $(function() {
 	
 	// And create the instance of ExampleView
 	var sidebarView = new SideBarView($("#sidebarView"), model);
-	var dishView = new DishView($("#dishView"),model);
+	var mainView = new MainView($("#mainView"),model);
 	var selectedDishView = new SelectedDishView($("#selectedDishView"),model);
+	var dishView = new DishView($("#dishView"),model);
 	//var dinnerOverView = new DinnerOverView($("#dinnerOverView"),model);
 	//var dinnerprintView = new DinnerPrintView($("#dinnerPrintView"),model);
 	//var dishView = new DishView($("#dishView"),model);
 
-	this.showDishViewScreen = function(dishView, model) {
-		var x = document.getElementById('dishView');
+	this.showDishViewScreen = function(mainView, model) {
+		var x = document.getElementById('mainView');
 
 		if (x.style.display === 'none') {
 			x.style.display = 'block';
