@@ -1,4 +1,6 @@
 var MainView = function(container, model) {
+	this.searchButton = container.find('#searchButton');
+	this.searchInput = container.find('#searchInput');
 	//För att få bilderna på första sidan.
 	var dishContainer = container.find('#dishContainer');
 	//För att komma vidare från sök till selected type/dish
@@ -10,27 +12,37 @@ var MainView = function(container, model) {
 	var typeList = ['starter', 'main dish', 'dessert'];
 	var index = selectElement.options[e.selectedIndex].value;
 	*/
-	//Skapa ny variabel för bilderna
-	var dishes = model.getAllDishes('starter');
-	//Skapa ny variabel för type,dish
-	var dishtype = model.getSelectedDish('dessert');
-	//SKapa ny variabel för hela menyn
-	var menu= model.getFullMenu();
+	container.find('#form').submit(function(e){
+    return false;
+	});
 	
-	//Skapa sträng för bilderna.
-	var htmlstring = "";
 
-	for (var i = 0; i < dishes.length; i++) {
-		htmlstring += '<div class="col-sm-2">';
-		htmlstring += '<img src="' + dishes[i].image + '"/>';
-		htmlstring += '</div>';							
+	this.update = function(filter) {
+		//Skapa ny variabel för bilderna
+
+		var dishes = model.getAllDishes('starter', filter);
+		//Skapa ny variabel för type,dish
+		var dishtype = model.getSelectedDish('dessert');
+		//SKapa ny variabel för hela menyn
+		var menu= model.getFullMenu();
+		var htmlstring = "";
+
+		for (var i = 0; i < dishes.length; i++) {
+			htmlstring += '<div class="dishBtn col-sm-4">';
+			htmlstring += '<img src="' + dishes[i].image + '"/>';
+			htmlstring += '' + dishes[i].name +' ';
+			htmlstring += '</div>';							
+			
+		}
 		
-	}
-	dishContainer.html(htmlstring);
-	dishtypeContainer.html(dishtype);
-	menuContainer.html(menu);
+		dishContainer.html(htmlstring);
+		dishtypeContainer.html(dishtype);
+		menuContainer.html(menu);
 
-	
+	};
+
+	this.update()
+	model.addObserver(this)		
 
 }	
 

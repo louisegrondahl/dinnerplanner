@@ -4,40 +4,51 @@ var DinnerModel = function() {
 	//TODO Lab 1 implement the data structure that will hold number of guest
 	// and selected dishes for the dinner menu
 
-	var num = 7;
+	var num = 0;
 
 
 	var menu = [];
+	var observers = [];
 
 
-	this.decreseNumberOfGuests = function(num) {
-		num=num--;
-	}
 
-	this.increseNumberOfGuests = function(num) {
-		num=num++;
-	}
+	this.addObserver = function(view){
+		observers.push(view);
+	};
 	
-	this.getNumberOfGuests = function() {
+	this.notifyObservers = function(){
+		for(i in observers){
+			observers[i].update()
+		};
+	};
+
+	this.setNumberOfGuests = function(){
+		gus = num;
+		this.notifyObservers();
+	};
+
+
+	this.getNumberOfGuests = function(num) {
 		return num;
-	}
+
+	};
 
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
 	var dishtype = [];
-		for(i in dishes){
+		for(var i in dishes){
 			if (dishes[i].type == type){
 				dishtype.push(dishes[i]);
-			}
-		}
+			};
+		};
 		return dishtype;
-	}
+	};
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
 		return menu;
 		
-	}
+	};
 
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function(id) {
@@ -82,6 +93,7 @@ var DinnerModel = function() {
 		}else{
 			console.log('gick snett');
 		}
+		this.notifyObservers();
 	}
 
 
@@ -103,6 +115,7 @@ var DinnerModel = function() {
 		}else{
 			console.log('somthing went wrong');
 		}
+		this.notifyObservers();
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
@@ -125,6 +138,8 @@ var DinnerModel = function() {
 		}
 	  	return dish.type == type && found;
 	  });	
+
+
 	}
 
 	//function that returns a dish of specific ID
@@ -136,13 +151,7 @@ var DinnerModel = function() {
 		}
 	}
 
-	this.addObserver = function(observer) {
-	/* Your code here */ 
-	}
 	
-	var notifyObservers = function(obj) {
-	/* Your code here */ 
-	}
 
 
 	// the dishes variable contains an array of all the 

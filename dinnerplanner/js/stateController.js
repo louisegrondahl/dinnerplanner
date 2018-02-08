@@ -1,9 +1,9 @@
-$("#index").hide();	
-$("#createnewdinner").click(function(){
-	$("#startpage").hide();
-	$("#index").show();
+// $("#index").hide();	
+// $("#createnewdinner").click(function(){
+// 	$("#startpage").hide();
+// 	$("#index").show();
 
-});
+// });
 
 
 

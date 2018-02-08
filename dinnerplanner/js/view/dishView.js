@@ -14,12 +14,11 @@ var DishView = function(container, model) {
 	for (var i = 0; i < dishes.length; i++) {
 		htmlstring += '<div class="col-sm-2">';
 		htmlstring += '<img src="' + dishes[i].image + '"/>';
+		htmlstring += '' + dishes[i].name +' ';
 		htmlstring += '</div>';							
 		
 	}
 	dishContainer.html(htmlstring);
-
-
 
 	
 
