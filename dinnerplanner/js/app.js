@@ -24,9 +24,21 @@ $(function() {
 	var dinnerprintView = new DinnerPrintView(print,model);
 	//var dishView = new DishView($("#dishView"),model);
 
-	//Controllers
-	var mainController = new MainController(mainView,model);
+	//Till sökt resultat
+	var showSelectedDishView = function(){
+		home.hide()
+		side.show()
+		main.hide()
+		dish.hide()
+		selected.show()
+		over.hide()
+	};
 
+	//Controllers
+	var mainController = new MainController(mainView, model);
+	var sideBarController = new SideBarController(sidebarView, model);
+	var selectedDishController = new SelectedDishController(selectedDishView, model, this);
+	var selectedController = new SelectedController(mainView, model, showSelectedDishView);
 
 //Homepage
 	home.show();
@@ -37,7 +49,9 @@ $(function() {
 	over.hide();
 	print.hide();
 
-
+this.homepage = function(){
+	showHomepage()
+}
 //Till startsidan
 var showHomepage = function() {
 	home.hide()
@@ -49,15 +63,7 @@ var showHomepage = function() {
 	print.hide()
 };
 
-//Till sökt resultat
-var showSelectedDishView = function(){
-	home.hide()
-	side.show()
-	main.hide()
-	dish.hide()
-	selected.show()
-	over.hide()
-};
+
 
 //Visa vald menu
 var showdinnerOverView = function(){
@@ -101,6 +107,10 @@ $("#backButton2").click(function(){
 	showHomepage();
 });
 
+// $("#addtomenu").click(function(){
+// 	showHomepage();
+// });
+
 $("#printButton").click(function(){
 	showdinnerPrintView();
 });
@@ -112,8 +122,9 @@ $("#backButton3").click(function(){
 
 $(".dishBtn").click(function(){
 	showSelectedDishView();
-	console.log("tjo");
+	//console.log("tjo");
 });
+
 
 // function myFunction() {
 //     var x = document.getElementById("mySearch").placeholder;

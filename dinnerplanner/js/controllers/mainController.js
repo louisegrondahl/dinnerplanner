@@ -3,16 +3,12 @@ var MainController = function(view, model){
 		
 
 		view.update(view.searchInput.val());
-
-		// if view.searchInput.val() in view.dishes
-		// 	getselecteddish
-		// else
-		// 	console.log("gick inte");
+		
 	});
+	view.selectType.change(function(){
+			var type = this.value;
+			view.update()
+		})
 
 	
 }
-
- // view.plusButton.click(function(){
- // model.setNumberOfGuests(model.getNumberOfGuests() + 1);
- // });

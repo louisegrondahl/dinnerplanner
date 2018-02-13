@@ -1,38 +1,32 @@
 
 var SideBarView = function (container, model) {
-	
-	this.confirmButton = container.find('#confirmButton');
-	this.plusButton = container.find('#plusGuest');
-	this.minusButton = container.find('#minusGuest');
-
 
 	var priceContainer = container.find('#totalPrice');
-	var fullMenuContainer = container.find('#fullMenu');
+	var fullMenuContainer = container.find('#sidebarmenu');
 	var gus = 0;
-	var plusGuest = container.find('#plusGuest');
-	var minusGuest = container.find('#minusGuest');
+	this.plusGuest = container.find('#plusGuest');
+	this.minusGuest = container.find('#minusGuest');
 	var numberOfGuests = container.find('#numberOfGuests');
 	
 	this.update = function() {
-		plusGuest.click(function(){
-			gus = gus + 1;
-			numberOfGuests.html(gus);
-		});
-		minusGuest.click(function(){
-			if (gus > 0){
-				gus = gus - 1;
-				numberOfGuests.html(gus);
-			};
+		
+		var dishes = model.getFullMenu();
+		var html='';
+		for (var i = 0; i < dishes.length; i++) {
+			html += '<div class="col-xs-9">';
+			html += '' + dishes[i].name + ' ';
+			html += '<div id="">' + model.getTotalMenuPrice(dishes[i].id) * numberOfGuests + '</div>';
+			html += '</div>'
+			html += '<br>';
 
-		});
-
-	numberOfGuests.html(model.getNumberOfGuests());
-	priceContainer.html(model.getTotalMenuPrice());
-	fullMenuContainer.html(model.getFullMenu());
+		}
+	
+		numberOfGuests.html(model.getNumberOfGuests());
+		priceContainer.html(model.getTotalMenuPrice());
+		fullMenuContainer.html(html);
 	};
 
-	this.update()
+	this.update();
 	model.addObserver(this)	
 	
 }
- 
