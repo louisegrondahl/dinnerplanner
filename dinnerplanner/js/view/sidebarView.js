@@ -1,9 +1,7 @@
-
 var SideBarView = function (container, model) {
 
 	var priceContainer = container.find('#totalPrice');
-	var fullMenuContainer = container.find('#dishname');
-	var dishPriceContainer = container.find('#dishprice');
+	//var dishPriceContainer = container.find('#dishprice');
 	var numberOfGuests = container.find('#numberOfGuests');
 	
 	this.plusGuest = container.find('#plusGuest');
@@ -12,29 +10,26 @@ var SideBarView = function (container, model) {
 	
 	this.update = function() {
 
-		var number = model.getNumberOfGuests();
-		var name='';	
-		var price='';
-		
-		var dishes = model.getFullMenu();
-		console.log("sidebarView dishes" + dishes);
-		var html='';
-		for (var i = 0; i < dishes.length; i++) {
-			name += dishes[i].name + '<br>';
-			
-			
-			// html += '<div class="col-xs-9">';
-			// html += '' + dishes[i].name + ' ';
-			// html += '<div class="col-xs-3>' + model.getTotalMenuPrice() + '</div>';
-			// html += '</div>'
-			// html += '<br>';
+		var number = model.getNumberOfGuests();	
+		var menu = model.getFullMenu();
+		var name='';
+		var dishprice = '';
 
+		for (var i = 0; i < menu.length; i++) {
+			name += menu[i].name + '<br>';
+			var sum = 0;
+			for (var j = 0; j < menu[i].ingredients.length; j++) {
+				sum += menu[i].ingredients[j].price*number;
+			}
+			dishprice += sum+"</br>";
+			
 		}
 
-		dishPriceContainer.html(price);
-		numberOfGuests.html(model.getNumberOfGuests());
+		container.find('#tdS1').html(name);
+		container.find('#tdS2').html(dishprice);
 		priceContainer.html(model.getTotalMenuPrice());
-		fullMenuContainer.html(name);
+		numberOfGuests.html(model.getNumberOfGuests());
+
 	};
 
 	this.update();

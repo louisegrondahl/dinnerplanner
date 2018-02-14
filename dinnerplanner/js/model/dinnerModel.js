@@ -10,14 +10,11 @@ var DinnerModel = function() {
 	var selectedDish = 0;
 
 	this.getDishId = function(){
-		//console.log("penis: " + selectedDish);
 		return selectedDish;
 	};
 
 	this.setDishId = function(id){
-
 		selectedDish = id;
-		//console.log("kuk: " + selectedDish)
 		notifyObservers();
 	};
 
