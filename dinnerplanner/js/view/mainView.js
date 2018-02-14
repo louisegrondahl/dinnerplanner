@@ -26,6 +26,7 @@ var MainView = function(container, model) {
 		for (var i = 0; i < dishes.length; i++) {
 			htmlstring += '<div id="'+ dishes[i].id +'" class="dishBtn col-sm-4">';
 			htmlstring += '<img src="' + dishes[i].image + '"/>';
+			htmlstring += '<br>';
 			htmlstring += '' + dishes[i].name +' ';
 			htmlstring += '</div>';	
 			

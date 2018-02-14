@@ -41,7 +41,7 @@ var DinnerModel = function() {
 	};
 
 
-	this.getNumberOfGuests = function(num) {
+	this.getNumberOfGuests = function() {
 		return num;
 
 	};
@@ -59,11 +59,7 @@ var DinnerModel = function() {
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
-		fullmenu=[];
-		for(key in this.menu){
-			fullmenu.push(this.getDish(this.menu[key]));
-		}
-		return fullmenu;
+		return menu;
 		
 	};
 
@@ -85,7 +81,7 @@ var DinnerModel = function() {
 		var totalPrice=0;
 		for (var i in menu) {
 			for(var j in menu[i].ingredients){
-				totalPrice += menu[i].ingredients[j].price*num;
+				totalPrice += menu[i].ingredients[j].price*this.getNumberOfGuests();
 			}
 		}
 
@@ -95,22 +91,23 @@ var DinnerModel = function() {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		for(var i in dishes) {
-			if(dishes[i].id==id){
-				var dish = dishes[i];
-				break;
-			}
-		}
-		if(dish.type=='starter'){
-			menu[0]=dish;
-		}else if(dish.type=='main dish'){
-			menu[1]=dish;
-		}else if(dish.type=='dessert') {
-			menu[2]=dish;
-		}
-		notifyObservers();
-	}
+		//console.log("addTo:"+id);
+		
+		var dish = this.getDish(id);
+		console.log("addDishToMenu"+this.getDish(id));
 
+		if(dish.type=='starter'){
+			menu.splice(0,0, dish);
+		}else if(dish.type=='main dish'){
+			menu.splice(1,0, dish);
+		}else if(dish.type=='dessert') {
+			menu.splice(2,0, dish);
+		}
+		//console.log("addDish" + dish);
+		//console.log("meny" + menu);
+		notifyObservers();
+	
+}
 
 
 	//Removes dish from menu

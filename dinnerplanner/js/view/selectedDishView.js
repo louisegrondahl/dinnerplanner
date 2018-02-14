@@ -6,25 +6,29 @@ var SelectedDishView = function(container, model) {
 	var dishPrice = container.find('#dishPrice');
 	
 	
-	var name='';
-	var quantity='';
-	var unit ='';
-	var price='';
+	
 
 	this.update = function(){
-		console.log(model.getDishId());
-		console.log("ifif")
+		//console.log(model.getDishId());
+		//console.log("ifif")
+		var name='';
+		var quantity='';
+		var unit ='';
+		var price='';
+		
+		
 		if(model.getDishId() != 0){
 			var dish = model.getDish(model.getDishId());
-			console.log("mus: " + model.getDishId());
+			//console.log("mus: " + model.getDishId());
 			var number = model.getNumberOfGuests();
 			var sum=0;
+			
 			for(var j=0; j < dish.ingredients.length; j++){
 				name += dish.ingredients[j].name + '<br>';
-				quantity += dish.ingredients[j].quantity + '<br>';
+				quantity += dish.ingredients[j].quantity*number + '<br>';
 				unit += dish.ingredients[j].unit + '<br>';
-				price += dish.ingredients[j].price + '<br>';
-				sum += dish.ingredients[j].price;
+				price += dish.ingredients[j].price*number + '<br>';
+				sum += dish.ingredients[j].price*number;
 				};
 
 				var imgString = '<img src="' + dish.image + '"/>';

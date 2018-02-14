@@ -3,8 +3,10 @@ var SelectedDishController = function(view, model, appController){
 	$('#addtomenu').click(function(){
 		//console.log("bajs");
 		//console.log(model.getDish());
-		model.addDishToMenu();
-		model.notifyObservers();
+
+		model.addDishToMenu(model.getDishId());
+		
+		
 		appController.homepage();
 	});
 }
