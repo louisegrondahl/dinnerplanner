@@ -35,9 +35,9 @@ var DinnerPrintView = function (container, model) {
 				}
 				
 				
-				ingred1 = '<td id="td4" class="col-sm-2">' + name + '</td>';
-				ingred2 = '<td id="td5">' + quantity + '</td>';
-				ingred3 = '<td id="td6">' + unit + '</td>';
+				ingred1 = '<td id="td4" class="col-sm-2" style="text-transform: capitalize;">' + name + '</td>';
+				ingred2 = '<td id="td5 class="col-sm-2" style="color:black;">' + quantity + '</td>';
+				ingred3 = '<td id="td6" class="col-sm-2" style="color:black;">' + unit + '</td>';
 
 				ingred = '<td id="td2">' +ingred1 + ingred2 + ingred3 +'</td>';
 

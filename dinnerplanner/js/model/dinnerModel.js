@@ -88,38 +88,33 @@ var DinnerModel = function() {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		//console.log("addTo:"+id);
-		
-		var dish = this.getDish(id);
-		console.log("addDishToMenu"+this.getDish(id));
-
-		if(dish.type=='starter'){
-			menu.splice(0,0, dish);
-		}else if(dish.type=='main dish'){
-			menu.splice(1,0, dish);
-		}else if(dish.type=='dessert') {
-			menu.splice(2,0, dish);
-		}
-		//console.log("addDish" + dish);
-		//console.log("meny" + menu);
-		notifyObservers();
 	
-}
+		var dish = this.getDish(id);
+		
+		if(dish.type == 'starter'){
+			menu.splice(0,1, dish);
+		}else if(dish.type == 'main dish'){
+			menu.splice(1,1, dish);
+		}else if(dish.type == 'dessert') {
+			menu.splice(2,1, dish);
+		}
+		
+		notifyObservers();
+		
+	
+	}
 
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		for(var i in dishes) {
-			if(dishes[i].id==id){
-				var dish = dishes[i];
-				break;
-			}
-		}
-		if(dish.type=='starter'){
+		
+		var dish=this.getDish(id)
+		
+		if(dish.type == 'starter'){
 			menu.splice(0,1);
-		}else if(dish.type=='main dish'){
+		}else if(dish.type == 'main dish'){
 			menu.splice(1,1);
-		}else if(dish.type=='dessert'){
+		}else if(dish.type == 'dessert'){
 			menu.splice(2,1);
 		}
 		notifyObservers();

@@ -9,14 +9,9 @@ var MainView = function(container, model) {
 	//För att hämta alla dishes, hela menyn
 	var menuContainer = container.find('#menuContainer');
 
-	/*
-	var selectElement = container.find("#selectType");
-	var typeList = ['starter', 'main dish', 'dessert'];
-	var index = selectElement.options[e.selectedIndex].value;
-	*/
-	container.find('#form').submit(function(e){
-    return false;
-	});
+	// container.find('#form').submit(function(e){
+ //    return false;
+	// });
 	
 
 	this.update = function(filter) {
@@ -43,23 +38,3 @@ var MainView = function(container, model) {
 
 	this.dishBtn = container.find(".dishBtn")
 }
-
-//var selectedType = document.getElementById("selectType").value;
-// 		//var dishes = model.getAllDishes(selectedType, filter);
-// 		var doFilter = true;
-// 		alert(selectedType);
-
-// 		if(selectedType == 'All') {
-// 			doFilter = false;
-// 			alert('filter:' + filter);
-// 		}
-
-// 		if(doFilter) {
-// 			var dishes = model.getAllDishes(selectedType, filter);
-// 		} else {
-// 			var dishes = model.getAllDishes();
-// 		}
-// 		//Skapa ny variabel för type,dish
-// 		var dishtype = model.getSelectedDish(selectedType);
-
-

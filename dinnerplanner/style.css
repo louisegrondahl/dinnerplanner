@@ -1,0 +1,91 @@
+body{
+	background-image: url(images/background.jpg);
+	height: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+hr{
+	border: 0;
+    border-bottom: 1px dashed #ccc;
+    background: #999;
+}
+
+img{
+	border-radius: 25px;
+   
+}
+
+th{
+	font-weight: bold;
+	color:black;
+}
+
+/*selectedDishView*/
+
+#ingredientsTable{
+	width: 100%;
+}
+
+#td1{
+	text-transform: capitalize;
+	color:black;
+}
+
+#td2{
+	color:black;
+}
+
+#td3{
+	color:black;
+}
+
+#td4{
+	color:black;
+}
+
+#dishPrice{
+	margin-left:317px;
+	color:black;
+}
+
+#addtomenu{
+	float: left;
+}
+
+#descriptionContainer{
+	color: black;
+}
+
+/*dinnerOverView*/
+
+#guests{
+	color:black;
+}
+
+#backButton2{
+	float: right
+}
+
+#totalPrice{
+	float:right;
+	color:black;
+}
+
+/*dinnerPrintOut*/
+
+#numberOfGuests{
+	color:black;
+}
+
+#backButton3{
+	float:right;
+}
+
+
+
+
+
+
+

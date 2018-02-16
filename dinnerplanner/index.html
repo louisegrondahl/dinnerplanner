@@ -6,6 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Dinner planner</title>
 
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 
@@ -16,7 +18,7 @@
 		<div class="text-center"><h1>Dinner planner</h1></div>
 	</div>
 <!--homeView-->
-	<div id=stateController>	
+	<div id=firstpage>	
 		<div id="homeView">
 			<div class="container">
 				<div class="text-center">
@@ -84,12 +86,12 @@
 							<hr style="height: 2px; ">
 							<div class="col-sm-12 row">
 								<p>Total price: 
-									<font id="totalPrice" color="red" style="float: right;"></font>
+									<font id="totalPrice" color="black" style="float: right;"></font>
 								</p>
 							</div>	
 							<hr>
 							<div class="row">
-								<button id="confirmButton" class="btn" align="center" style="margin-bottom: 15px;">Confirm dinner</button>
+								<input id="confirmButton" type="button" class="btn btn-primary" value="Confirm Dinner"</input>
 							</div>
 						</div>
 					</ul>
@@ -131,7 +133,7 @@
 
 <!--selectedDishView-->
 	<div id="selectedDishView" class="col-sm-9">
-		<p><button id ="backButton" type="button" class="btn btn-primary center-block">Back to search</button><p>
+		<p><input id ="backButton" type="button" class="btn btn-primary center-block" value="Back to search"></input><p>
 		<!--<i class="fa fa-times" data-toggle="collapse" data-target="sidebar" aria-hidden="true" aria-expanded="false" aria-controls="sidebar" onclick="document.getElementById(this.getAttribute('data-target')).style.display = 'none';"></i>-->
 		<div class="col-sm-6">
 			<h1 id="title"></h1>
@@ -141,7 +143,7 @@
 		<div class="col-sm-6">
 			<h1>Ingredients</h1>
 			<div id="ingredientsContainer">
-				<table id="ingredientsContainer" style="width: 100%;">
+				<table id="ingredientsTable">
 					<tr>
 						<th>Ingredients</th>
 						<th>Quantity</th>
@@ -157,11 +159,10 @@
 				</table>
 			</div>
 			<div class="row">
-				
-				<div class="col-md-3">
-					<button id="addtomenu" type="button" class="btn btn-primary" style="float: left">Add to menu</button>
-				</div>
-				<div id="dishPrice" class="col-sm-6"></div>
+				<div id="dishPrice"></div>
+				<p><div class="col-md-3">
+					<input id="addtomenu" type="button" class="btn btn-primary" value="Add to menu"></input>
+				</div></p>
 			</div>
 			
 		</div>
@@ -174,7 +175,7 @@
 	<div id="dinnerOverView" class="col-md-12 row">
 		<div class="row">
 			<p id="guests"></p>
-			<button id="backButton2" type="button" class="btn btn-primary" style="float: right">Go back and edit dinner</button>
+			<input id="backButton2" type="button" class="btn btn-primary" value="Go back and edit dinner"></input>
 		</div>
 		<hr>
 		<div class="container">
@@ -185,11 +186,11 @@
 			<hr>
 			<div>
 				<p>TOTAL SEK: 
-					<font id="totalPrice" color="red" style="float: right"></font>
+					<font id="totalPrice"></font>
 				</p>
 			</div>
 			<hr>
-			<button id="printButton" type="button" class="btn btn-primary center-block">Print My Recipe</button>
+			<input id="printButton" type="button" class="btn btn-primary center-block" value="Print My Recipe"></input>
 		</div>
 	</div>
 
@@ -197,7 +198,7 @@
 	<div id="dinnerPrintOut" class="col-md-12">
 		<div class="row">
 			<p id="numberOfGuests"></p>
-			<button id="backButton3" type="button" class="btn btn-primary" style="float: right">Go back and edit dinner</button>
+			<input id="backButton3" type="button" class="btn btn-primary" value="Go back and edit dinner"></input>
 		</div>
 		<hr>
 		<div id="table" class="container col-md-12 row">
@@ -205,7 +206,6 @@
 				
 			</table>
 		</div>
-		<hr>
 	</div>
 
 

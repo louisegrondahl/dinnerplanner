@@ -9,8 +9,6 @@ var SelectedDishView = function(container, model) {
 	
 
 	this.update = function(){
-		//console.log(model.getDishId());
-		//console.log("ifif")
 		var name='';
 		var quantity='';
 		var unit ='';
@@ -19,7 +17,6 @@ var SelectedDishView = function(container, model) {
 		
 		if(model.getDishId() != 0){
 			var dish = model.getDish(model.getDishId());
-			//console.log("mus: " + model.getDishId());
 			var number = model.getNumberOfGuests();
 			var sum=0;
 			
