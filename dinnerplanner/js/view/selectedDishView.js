@@ -9,35 +9,36 @@ var SelectedDishView = function(container, model) {
 	
 
 	this.update = function(){
-		var name='';
+		var title='';
 		var quantity='';
 		var unit ='';
 		var price='';
 		
 		
 		if(model.getDishId() != 0){
-			var dish = model.getDish(model.getDishId());
+			model.getDish(model.getDishId(), function(dish){
 			var number = model.getNumberOfGuests();
 			var sum=0;
 			
-			for(var j=0; j < dish.ingredients.length; j++){
-				name += dish.ingredients[j].name + '<br>';
-				quantity += dish.ingredients[j].quantity*number + '<br>';
-				unit += dish.ingredients[j].unit + '<br>';
-				price += dish.ingredients[j].price*number + '<br>';
-				sum += dish.ingredients[j].price*number;
+			for(var j=0; j < dish.extendedIngredients.length; j++){
+				title += dish.extendedIngredients[j].title + '<br>';
+				quantity += dish.extendedIngredients[j].quantity*number + '<br>';
+				unit += dish.extendedIngredients[j].unit + '<br>';
+				price += dish.extendedIngredients[j].price*number + '<br>';
+				sum += dish.extendedIngredients[j].price*number;
 				};
 
-				var imgString = '<img src="' + dish.image + '"/>';
+				var imgString = '<img src="' + dish[i].image + '"/>';
 
-				title.html(dish.name);
+				title.html(dish.title);
 				imageContainer.html(imgString);
-				descriptionContainer.html(dish.description);
-				container.find('#td1').html(name);
+				descriptionContainer.html(dish.instructions);
+				container.find('#td1').html(title);
 				container.find('#td2').html(quantity);
 				container.find('#td3').html(unit);
 				container.find('#td4').html(price);
 				dishPrice.html(sum);
+				});
 		}
 		
 

@@ -4,6 +4,7 @@ body{
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+	opacity: 0.8;
 }
 
 hr{
@@ -14,6 +15,8 @@ hr{
 
 img{
 	border-radius: 25px;
+	height: 50%;
+	width: 50%;
    
 }
 

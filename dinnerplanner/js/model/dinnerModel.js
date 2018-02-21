@@ -1,8 +1,7 @@
-//DinnerModel Object constructor
+
 var DinnerModel = function() {
  
-	//TODO Lab 1 implement the data structure that will hold number of guest
-	// and selected dishes for the dinner menu
+ 	var apiKey = 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
 
 	var num = 0;
 	var menu = [];
@@ -24,8 +23,7 @@ var DinnerModel = function() {
 
 	
 	var notifyObservers = function(){
-		//console.log(menu)
-		//console.log(observers)
+
 		for(i in observers){
 			observers[i].update()
 		};
@@ -100,10 +98,8 @@ var DinnerModel = function() {
 		}
 		
 		notifyObservers();
-		
 	
 	}
-
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
@@ -120,50 +116,46 @@ var DinnerModel = function() {
 		notifyObservers();
 	}
 
-	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
-	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
-	//if you don't pass any filter all the dishes will be returned
-	this.getAllDishes = function (type,filter) {
-	  return dishes.filter(function(dish) {
-		var found = true;
-		if(filter){
-			found = false;
-			dish.ingredients.forEach(function(ingredient) {
-				if(ingredient.name.indexOf(filter)!=-1) {
-					found = true;
-				}
-			});
-			if(dish.name.indexOf(filter) != -1)
-			{
-				found = true;
+
+
+	this.getAllDishes = function (type, filter, callback, errorCallback) {
+		$.ajax( {
+			url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?query=' + type,
+			headers: {
+			 'X-Mashape-Key': apiKey
+			},
+			success: function(data) {
+				// callback(data) Här har ni fått datan och måste uppdatera era views (notifyObservers)
+
+				callback(data.results);
+			},
+			error: function(error) {
+				console.log(error)
 			}
-		}
-	  	return dish.type == type && found;
-	  });	
-
-
+		 })
 	}
 
 	//function that returns a dish of specific ID
-	this.getDish = function (id) {
-	  for(key in dishes){
-			if(dishes[key].id == id) {
-				return dishes[key];
+	this.getDish = function (id, callback, errorCallback) {
+		$.ajax( {
+			url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/' + id + '/information/',
+			headers: {
+			 'X-Mashape-Key': apiKey
+			},
+			success: function(data) {
+				// callback(data) Här har ni fått datan och måste uppdatera era views (notifyObservers)
+				callback(data)
+				console.log(data);
+			},
+			error: function(error) {
+				console.log(error)
 			}
-		}
+		 })
 	}
 
 	
 
 
-	// the dishes variable contains an array of all the 
-	// dishes in the database. each dish has id, name, type,
-	// image (name of the image file), description and
-	// array of ingredients. Each ingredient has name, 
-	// quantity (a number), price (a number) and unit (string 
-	// defining the unit i.e. "g", "slices", "ml". Unit
-	// can sometimes be empty like in the example of eggs where
-	// you just say "5 eggs" and not "5 pieces of eggs" or anything else.
 	
 	var dishes = [{
 		'id':1,

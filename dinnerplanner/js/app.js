@@ -18,11 +18,9 @@ $(function() {
 	var sidebarView = new SideBarView(side, model);
 	var mainView = new MainView(main,model);
 	var selectedDishView = new SelectedDishView(selected,model);
-	//var dishView = new DishView(dish,model);
-	//var stateController = new stateController($("#stateController"),model);
 	var dinnerOverView = new DinnerOverView(over,model);
 	var dinnerprintView = new DinnerPrintView(print,model);
-	//var dishView = new DishView($("#dishView"),model);
+
 
 	//Till sökt resultat
 	var showSelectedDishView = function(){
@@ -62,8 +60,6 @@ var showHomepage = function() {
 	over.hide() 
 	print.hide()
 };
-
-
 
 //Visa vald menu
 var showdinnerOverView = function(){
@@ -107,10 +103,6 @@ $("#backButton2").click(function(){
 	showHomepage();
 });
 
-// $("#addtomenu").click(function(){
-// 	showHomepage();
-// });
-
 $("#printButton").click(function(){
 	showdinnerPrintView();
 });
@@ -126,51 +118,5 @@ $(".dishBtn").click(function(){
 });
 
 
-// function myFunction() {
-//     var x = document.getElementById("mySearch").placeholder;
-//     document.getElementById("demo").innerHTML = x;
-// }
-// onclick="myFunction()"
-
-
-// function showHomepage() {
-// 	homeView.style.display = 'block';
-// 	sidebarView.style.display = 'none';
-// 	mainView.style.display = 'none';
-// 	selectedDishView.style.display = 'none';
-// 	dishView.style.display = 'none';
-
-// };
-
-
-// function showStartpage() {
-// 	var x = document.getElementById('createnewdinner');
-// 	sidebarView.style.display = 'block'
-// 	mainView.style.display = 'block'
-// 	selectedDishView.style.display = 'none'
-// 	dishView.style.display = 'block'
-
-
-// }
-
-
-
-
-
-	// //Om du trycker på sök knappen
-	// $("searchButton").click(function(){
-	// 	$("#selectedDishView")
-	// });
-
-
-
-
-//addeventlistener
-	/**
-	 * IMPORTANT: app.js is the only place where you are allowed to
-	 * use the $('someSelector') to search for elements in the whole HTML.
-	 * In other places you should limit the search only to the children 
-	 * of the specific view you're working with (see exampleView.js).
-	 */
 
 });
