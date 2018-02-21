@@ -1,7 +1,10 @@
 
 var DinnerModel = function() {
+
  
  	var apiKey = 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
+
+
 
 	var num = 0;
 	var menu = [];
@@ -118,6 +121,7 @@ var DinnerModel = function() {
 
 
 
+
 	this.getAllDishes = function (type, filter, callback, errorCallback) {
 		$.ajax( {
 			url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?query=' + type,
@@ -137,20 +141,24 @@ var DinnerModel = function() {
 
 	//function that returns a dish of specific ID
 	this.getDish = function (id, callback, errorCallback) {
+
 		$.ajax( {
-			url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/' + id + '/information/',
-			headers: {
-			 'X-Mashape-Key': apiKey
-			},
-			success: function(data) {
-				// callback(data) Här har ni fått datan och måste uppdatera era views (notifyObservers)
-				callback(data)
-				console.log(data);
-			},
-			error: function(error) {
-				console.log(error)
-			}
-		 })
+			
+		   	url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/' + id + '/information',
+		   	headers: {
+		     	'X-Mashape-Key': apiKey
+		   	},
+		   success: function(data) {
+		     console.log(data)
+		     callback(data)
+
+		   	},
+		   error: function(error) {
+		     errorCallback(error)
+		   	}
+		 
+		})
+
 	}
 
 	
