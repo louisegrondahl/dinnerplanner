@@ -15,18 +15,21 @@ var MainView = function(container, model) {
 	
 
 	this.update = function(filter) {
-		var dishes = model.getAllDishes(selectType.value, filter);
+		model.getAllDishes(selectType.value, filter, function(dishes){
 		var htmlstring = "";
 		var id=0;
 		for (var i = 0; i < dishes.length; i++) {
 			htmlstring += '<div id="'+ dishes[i].id +'" class="dishBtn col-sm-4">';
-			htmlstring += '<img src="' + dishes[i].image + '"/>';
+			htmlstring += '<img src="https://spoonacular.com/recipeImages/' + dishes[i].image + '"/>';
 			htmlstring += '<br>';
-			htmlstring += '' + dishes[i].name +' ';
+			htmlstring += '' + dishes[i].title +' ';
 			htmlstring += '</div>';	
 			
 		}
 		dishContainer.html(htmlstring);
+
+		});
+		
 		
 		//dishtypeContainer.html(dishtype);
 		//menuContainer.html(menu);
