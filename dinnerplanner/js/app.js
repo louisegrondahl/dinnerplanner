@@ -33,10 +33,10 @@ $(function() {
 	};
 
 	//Controllers
-	var mainController = new MainController(mainView, model);
+	var mainController = new MainController(mainView, model, showSelectedDishView);
 	var sideBarController = new SideBarController(sidebarView, model);
 	var selectedDishController = new SelectedDishController(selectedDishView, model, this);
-	var selectedController = new SelectedController(mainView, model, showSelectedDishView);
+	// var selectedController = new SelectedController(mainView, model, showSelectedDishView);
 
 //Homepage
 	home.show();

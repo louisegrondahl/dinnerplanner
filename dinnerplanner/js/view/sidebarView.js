@@ -1,7 +1,6 @@
 var SideBarView = function (container, model) {
 
 	var priceContainer = container.find('#totalPrice');
-	//var dishPriceContainer = container.find('#dishprice');
 	var numberOfGuests = container.find('#numberOfGuests');
 	
 	this.plusGuest = container.find('#plusGuest');
@@ -16,11 +15,8 @@ var SideBarView = function (container, model) {
 		var dishprice = '';
 
 		for (var i = 0; i < menu.length; i++) {
-			name += menu[i].name + '<br>';
-			var sum = 0;
-			for (var j = 0; j < menu[i].ingredients.length; j++) {
-				sum += menu[i].ingredients[j].price*number;
-			}
+			name += menu[i].title + '<br>';
+			var sum = menu[i].pricePerServing*number;
 			dishprice += sum+"</br>";
 			
 		}

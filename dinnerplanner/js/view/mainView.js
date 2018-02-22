@@ -1,9 +1,10 @@
 var MainView = function(container, model) {
+	var view = this;
 	this.searchButton = container.find('#searchButton');
 	this.searchInput = container.find('#searchInput');
 	this.selectType = container.find('#selectType');
+	this.dishContainer = container.find("#dishContainer");
 	//För att få bilderna på första sidan.
-	var dishContainer = container.find('#dishContainer');
 	//För att komma vidare från sök till selected type/dish
 	var dishtypeContainer = container.find('#dishtypeContainer');
 	//För att hämta alla dishes, hela menyn
@@ -25,7 +26,7 @@ var MainView = function(container, model) {
 			htmlstring += '</div>';	
 			
 		}
-		dishContainer.html(htmlstring);
+		view.dishContainer.html(htmlstring);
 
 		});
 		
@@ -35,5 +36,5 @@ var MainView = function(container, model) {
 	this.update()
 	model.addObserver(this)		
 
-	this.dishBtn = container.find(".dishBtn")
+	
 }

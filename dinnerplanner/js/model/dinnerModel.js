@@ -6,17 +6,17 @@ var DinnerModel = function() {
 
 
 
-	var num = 0;
+	var num = 2;
 	var menu = [];
 	var observers = [];
-	var selectedDish = 0;
+	var selectedDish = {};
 
-	this.getDishId = function(){
+	this.getCurrentDish = function(){
 		return selectedDish;
 	};
 
-	this.setDishId = function(id){
-		selectedDish = id;
+	this.setCurrentDish = function(dish){
+		selectedDish = dish;
 		notifyObservers();
 	};
 
@@ -77,43 +77,48 @@ var DinnerModel = function() {
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
 		var totalPrice=0;
+		
 		for (var i in menu) {
-			for(var j in menu[i].ingredients){
-				totalPrice += menu[i].ingredients[j].price*this.getNumberOfGuests();
-			}
+			totalPrice += menu[i].pricePerServing*num
 		}
 
 		return totalPrice;
 	}
 
-	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
-	//it is removed from the menu and the new one added.
-	this.addDishToMenu = function(id) {
-	
-		var dish = this.getDish(id);
-		
-		if(dish.type == 'starter'){
-			menu.splice(0,1, dish);
-		}else if(dish.type == 'main dish'){
-			menu.splice(1,1, dish);
-		}else if(dish.type == 'dessert') {
-			menu.splice(2,1, dish);
-		}
+	this.addDishToMenu = function(dish) {
+		menu.push(dish);
 		
 		notifyObservers();
 	
 	}
+	// this.addDishToMenu = function(id, callback, errorCallback) {
+	// 	$.ajax( {
+	// 		url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/' + id + '/information/dishTypes/',
+	// 		headers: {
+	// 		 'X-Mashape-Key': apiKey
+	// 		},
+	// 		success: function(data) {
+
+	// 			callback(data);
+	// 		},
+	// 		error: function(error) {
+	// 			console.log(error)
+	// 		}
+	// 	 })
+	// 	notifyObservers();
+	// }
+
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
 		
 		var dish=this.getDish(id)
 		
-		if(dish.type == 'starter'){
+		if(dish.dishTypes == 'starter'){
 			menu.splice(0,1);
-		}else if(dish.type == 'main dish'){
+		}else if(dish.dishTypes == 'main dish'){
 			menu.splice(1,1);
-		}else if(dish.type == 'dessert'){
+		}else if(dish.dishTypes == 'dessert'){
 			menu.splice(2,1);
 		}
 		notifyObservers();
@@ -129,8 +134,6 @@ var DinnerModel = function() {
 			 'X-Mashape-Key': apiKey
 			},
 			success: function(data) {
-				// callback(data) Här har ni fått datan och måste uppdatera era views (notifyObservers)
-
 				callback(data.results);
 			},
 			error: function(error) {
@@ -139,7 +142,7 @@ var DinnerModel = function() {
 		 })
 	}
 
-	//function that returns a dish of specific ID
+
 	this.getDish = function (id, callback, errorCallback) {
 
 		$.ajax( {
@@ -149,12 +152,12 @@ var DinnerModel = function() {
 		     	'X-Mashape-Key': apiKey
 		   	},
 		   success: function(data) {
-		     console.log(data)
-		     callback(data)
+		   		console.log(data)
+		    	callback(data)
 
 		   	},
 		   error: function(error) {
-		     errorCallback(error)
+		    	errorCallback(error)
 		   	}
 		 
 		})
