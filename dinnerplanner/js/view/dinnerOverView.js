@@ -16,7 +16,7 @@ var DinnerOverView = function(container, model) {
 			htmlstring += '<div class="col-sm-2">';
 			htmlstring += '<img src="' + dishes[i].image + '"/>';
 			htmlstring += '<br>';
-			htmlstring += '' + dishes[i].name +' ';
+			htmlstring += '' + dishes[i].title +' ';
 			htmlstring += '</div>';	
 
 		}

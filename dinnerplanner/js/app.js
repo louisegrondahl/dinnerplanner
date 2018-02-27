@@ -21,7 +21,6 @@ $(function() {
 	var dinnerOverView = new DinnerOverView(over,model);
 	var dinnerprintView = new DinnerPrintView(print,model);
 
-
 	//Till sökt resultat
 	var showSelectedDishView = function(){
 		home.hide()
@@ -34,10 +33,11 @@ $(function() {
 
 	//Controllers
 	var mainController = new MainController(mainView, model, showSelectedDishView);
-	var sideBarController = new SideBarController(sidebarView, model);
+	var sideBarController = new SideBarController(sidebarView, model, this);
 	var selectedDishController = new SelectedDishController(selectedDishView, model, this);
 	// var selectedController = new SelectedController(mainView, model, showSelectedDishView);
 
+	
 //Homepage
 	home.show();
 	side.hide();
@@ -116,7 +116,6 @@ $(".dishBtn").click(function(){
 	showSelectedDishView();
 	//console.log("tjo");
 });
-
 
 
 });

@@ -1,4 +1,4 @@
-var SideBarController = function(view, model){
+var SideBarController = function(view, model, appController){
 	
 	view.plusGuest.click(function(){
 		var n = model.getNumberOfGuests();
@@ -10,6 +10,11 @@ var SideBarController = function(view, model){
 		n = n - 1;
 		model.setNumberOfGuests(n);
 
+	});
+
+	view.dishContainer.on('click', '.remove-button', function(){
+		var dishId = $(this).attr("id")
+		model.removeDishFromMenu(dishId);
 	});
 
 }

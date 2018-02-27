@@ -82,12 +82,14 @@ var DinnerModel = function() {
 			totalPrice += menu[i].pricePerServing*num
 		}
 
-		return totalPrice;
+		return Math.round(totalPrice);
 	}
 
-	this.addDishToMenu = function(dish) {
-		menu.push(dish);
-		
+	this.addDishToMenu = function(dish) {	
+
+		if (!menu.some(d => d.id == dish.id)){
+			menu.push(dish)
+		}
 		notifyObservers();
 	
 	}
@@ -111,40 +113,36 @@ var DinnerModel = function() {
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		
-		var dish=this.getDish(id)
-		
-		if(dish.dishTypes == 'starter'){
-			menu.splice(0,1);
-		}else if(dish.dishTypes == 'main dish'){
-			menu.splice(1,1);
-		}else if(dish.dishTypes == 'dessert'){
-			menu.splice(2,1);
-		}
+		for (var i = 0; i < menu.length; i++){
+			if (menu.some(d => d.id == id)){
+				menu.splice(i, 1)
+			}
+		}	
 		notifyObservers();
 	}
 
-
-
-
 	this.getAllDishes = function (type, filter, callback, errorCallback) {
+		
 		$.ajax( {
-			url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?query=' + type,
+			url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?type=' + type + '&query=' + filter,
 			headers: {
 			 'X-Mashape-Key': apiKey
 			},
+			
 			success: function(data) {
 				callback(data.results);
 			},
 			error: function(error) {
 				console.log(error)
-			}
+				alert(error.statusText + '. You have no internet connection')
+			},
+			
 		 })
+
 	}
 
 
 	this.getDish = function (id, callback, errorCallback) {
-
 		$.ajax( {
 			
 		   	url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/' + id + '/information',
@@ -152,20 +150,20 @@ var DinnerModel = function() {
 		     	'X-Mashape-Key': apiKey
 		   	},
 		   success: function(data) {
-		   		console.log(data)
+		   		//console.log(data)
 		    	callback(data)
-
 		   	},
 		   error: function(error) {
 		    	errorCallback(error)
-		   	}
-		 
+		    	console.log(error)
+				alert(error.statusText + '. You have no internet connection')
+		    	
+		   	},
+
 		})
 
+
 	}
-
-	
-
 
 	
 	var dishes = [{

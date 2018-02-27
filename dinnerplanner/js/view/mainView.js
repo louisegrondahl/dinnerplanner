@@ -4,6 +4,7 @@ var MainView = function(container, model) {
 	this.searchInput = container.find('#searchInput');
 	this.selectType = container.find('#selectType');
 	this.dishContainer = container.find("#dishContainer");
+	this.loader = container.find('.loader');
 	//För att få bilderna på första sidan.
 	//För att komma vidare från sök till selected type/dish
 	var dishtypeContainer = container.find('#dishtypeContainer');
@@ -14,7 +15,7 @@ var MainView = function(container, model) {
 	
 
 	this.update = function(filter) {
-
+		
 		model.getAllDishes(selectType.value, filter, function(dishes){
 		var htmlstring = "";
 		var id=0;
@@ -27,7 +28,6 @@ var MainView = function(container, model) {
 			
 		}
 		view.dishContainer.html(htmlstring);
-
 		});
 		
 		

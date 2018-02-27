@@ -5,6 +5,7 @@ var SelectedDishView = function(container, model) {
 	var descriptionContainer = container.find('#descriptionContainer');
 	var dishPrice = container.find('#dishPrice');
 	this.addToMenu = container.find('#addtomenu');
+	this.loader = container.find('.loader');
 	
 	
 	
@@ -25,7 +26,7 @@ var SelectedDishView = function(container, model) {
 			for(var j=0; j < dish.extendedIngredients.length; j++){
 
 				name += dish.extendedIngredients[j].name + '<br>';
-				quantity += dish.extendedIngredients[j].amount*number + '<br>';
+				quantity += Math.round(dish.extendedIngredients[j].amount*number) + '<br>';
 				unit += dish.extendedIngredients[j].unit + '<br>';
 				sum += dish.extendedIngredients[j].price*number;
 				};
@@ -40,8 +41,6 @@ var SelectedDishView = function(container, model) {
 				container.find('#td2').html(quantity);
 				container.find('#td3').html(unit);
 				dishPrice.html(sum);
-
-			
 		}
 		
 
